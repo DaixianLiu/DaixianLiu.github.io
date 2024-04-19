@@ -236,7 +236,7 @@ def validate(val_loader, model, val_seed):
             model_time.update(time.time() - start_time)
 
             H, W = target.shape[-2:]
-            if args.ori_resize:  # 真值转化为方形
+            if args.ori_resize:
                 H, W = ori_label.size(1), ori_label.size(2)
                 target = map_to_square(ori_label).long()
                 target_b = map_to_square(ori_label_b).long()
