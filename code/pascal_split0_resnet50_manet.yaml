@@ -1,6 +1,4 @@
 Data:
-#  data_root:
-#  base_data_root:
   data_root: ../data/VOCdevkit2012/VOC2012
   base_data_root: ../data/base_annotation/pascal/
   train_list: ./lists/pascal/voc_sbd_merge_noduplicate.txt
@@ -31,7 +29,6 @@ Train:
   base_lr: 0.0001
   pre_weight: ./initmodel/PSPNet/pascal/split0/resnet50/best.pth
   epochs: 200
-  ####me:正常写的是50epoch错，是coco的
   start_epoch: 0 
   stop_interval: 80 # stop when the best result is not updated for "stop_interval" epochs
   index_split: 0  # index for determining the params group with 10x learning rate
@@ -55,7 +52,6 @@ Train:
   fix_bn: True
   manual_seed: 321
   seed_deterministic: False
-  ###我加
   zoom_factor: 8
 
 Method:
@@ -69,6 +65,6 @@ Method:
   merge_tau: 0.9     # fusion threshold tau
 
 Test_Finetune:
-  weight: train5_epoch_41_0.7158.pth  # Path to the test model
+  weight: # Path to the test model
   ann_type: 'mask' # mask/bbox
 
