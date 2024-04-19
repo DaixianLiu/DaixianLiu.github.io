@@ -273,13 +273,9 @@ def maximum_square_loss(pred, target):
     max_square_diff = torch.max(diff**2)
     return max_square_diff
 def dice_loss(pred, target, smooth=1e-6):
-    # 计算交集
     intersection = (pred * target).sum(dim=(1,2))
-    # 计算并集
     union = pred.sum(dim=(1,2)) + target.sum(dim=(1,2))
-    # 计算Dice系数
     dice = (2. * intersection + smooth) / (union + smooth)
-    # 返回Dice Loss
     return 1 - dice.mean()
 
 
@@ -522,7 +518,7 @@ def validate(val_loader, model):
             model_time.update(time.time() - start_time)
 
             H, W = target.shape[-2:]
-            if args.ori_resize:  # 真值转化为方形
+            if args.ori_resize:
                 H, W = ori_label.size(1), ori_label.size(2)
                 target = map_to_square(ori_label).long()
                 target_b = map_to_square(ori_label_b).long()
